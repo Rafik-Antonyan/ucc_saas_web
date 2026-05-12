@@ -17,7 +17,7 @@ export function UccSearchBar({ value, onSearch }: { value?: string; onSearch: (v
       }}
     >
       <div className="relative min-w-0 flex-1">
-        <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" aria-hidden="true" />
+        <Search className="pointer-events-none absolute left-3 py-2 px-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" aria-hidden="true" />
         <Input className="pl-9" placeholder="Search debtor, secured party, file number, city, county, or ZIP" value={search} onChange={(event) => setSearch(event.target.value)} />
       </div>
       <Button type="submit" variant="secondary">Search</Button>

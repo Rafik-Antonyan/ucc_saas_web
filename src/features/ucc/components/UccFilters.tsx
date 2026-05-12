@@ -81,7 +81,7 @@ export function UccFilters({ filters, onApply, onClear }: { filters: UccListQuer
       </div>
       <div className="mt-4 flex justify-end gap-2">
         <Button type="button" variant="ghost" onClick={onClear}>Clear filters</Button>
-        <Button type="submit" variant="secondary">Apply filters</Button>
+        <Button type="submit" variant="secondary" className="py-2 px-4">Apply filters</Button>
       </div>
     </form>
   );

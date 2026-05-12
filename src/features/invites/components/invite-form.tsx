@@ -54,7 +54,7 @@ export function InviteForm({ defaultRole = UserRole.COMPANY_USER }: { defaultRol
           <FormField label="Expires in days" error={errors.expiresInDays?.message}>
             <Input type="number" min={1} max={30} {...register("expiresInDays")} />
           </FormField>
-          {createMutation.error ? <p className="md:col-span-2 text-sm text-red-600">{getErrorMessage(createMutation.error)}</p> : null}
+          {createMutation.error ? <p className="md:col-span-2 px-4 py-2 text-sm text-red-600">{getErrorMessage(createMutation.error)}</p> : null}
           <div className="md:col-span-2">
             <Button type="submit" isLoading={createMutation.isPending}>
               Create invite

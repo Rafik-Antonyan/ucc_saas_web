@@ -63,10 +63,10 @@ export function UccRecordsPage({ admin = false }: { admin?: boolean }) {
         description={admin ? "View, create, edit, delete, and import UCC records." : "Company territory access is enforced by the backend response."}
         action={admin ? (
           <div className="flex gap-2">
-            <Link className="inline-flex min-h-10 items-center justify-center gap-2 rounded-md border border-slate-300 bg-white text-sm font-medium text-slate-900 hover:bg-slate-50" href="/admin/ucc/import">
+            <Link className="inline-flex min-h-10 items-center justify-center gap-2 px-4 py-2 rounded-md border border-slate-300 bg-white text-sm font-medium text-slate-900 hover:bg-slate-50" href="/admin/ucc/import">
               <Upload className="h-4 w-4" /> Import
             </Link>
-            <Link className="inline-flex min-h-10 items-center justify-center gap-2 rounded-md bg-primary text-sm font-medium text-white hover:bg-emerald-800" href="/admin/ucc/new">
+            <Link className="inline-flex min-h-10 items-center justify-center gap-2 px-4 py-2 rounded-md bg-primary text-sm font-medium text-white hover:bg-emerald-800" href="/admin/ucc/new">
               <Plus className="h-4 w-4" /> Create record
             </Link>
           </div>
