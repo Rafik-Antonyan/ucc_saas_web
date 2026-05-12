@@ -21,7 +21,7 @@ export function UsersList() {
         title="Users"
         description="Company-scoped user management."
         action={
-          <Link className="inline-flex min-h-10 items-center gap-2 rounded-md bg-primary text-sm font-medium text-white hover:bg-emerald-800" href="/users/create">
+          <Link className="inline-flex min-h-10 items-center gap-2 px-4 py-2 rounded-md bg-primary text-sm font-medium text-white hover:bg-emerald-800" href="/users/create">
             <Plus className="h-4 w-4" />
             Invite user
           </Link>

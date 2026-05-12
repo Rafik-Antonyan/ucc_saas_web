@@ -33,7 +33,7 @@ export function CompaniesList() {
         title="Companies"
         description="Super admin tenant management."
         action={
-          <Link className="inline-flex min-h-10 items-center gap-2 rounded-md bg-primary text-sm font-medium text-white hover:bg-emerald-800" href="/companies/create">
+          <Link className="inline-flex min-h-10 items-center px-4 py-2 gap-2 rounded-md bg-primary text-sm font-medium text-white hover:bg-emerald-800" href="/companies/create">
             <Plus className="h-4 w-4" />
             New company
           </Link>
