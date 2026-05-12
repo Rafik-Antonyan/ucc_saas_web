@@ -27,7 +27,7 @@ export function UccLeadDetailPage({ id, admin = false }: { id: string; admin?: b
       <PageHeader
         title={record.debtorName}
         description="Lead detail, CRM status, notes, follow-ups, alerts, and activity history."
-        action={<Link className="inline-flex min-h-10 items-center gap-2 rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-900 hover:bg-slate-50" href={basePath}><ArrowLeft className="h-4 w-4" /> Back</Link>}
+        action={<Link className="inline-flex min-h-10 items-center gap-2 rounded-md border border-slate-300 bg-white text-sm font-medium text-slate-900 hover:bg-slate-50" href={basePath}><ArrowLeft className="h-4 w-4" /> Back</Link>}
       />
       <div className="space-y-6">
         <DuplicateWarning warning={record.duplicateWarning} />

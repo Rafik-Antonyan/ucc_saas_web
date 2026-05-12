@@ -161,7 +161,7 @@ export function UccBulkImportPage() {
               <Button type="button" variant="secondary" onClick={downloadTemplate}>
                 <Download className="h-4 w-4" /> Download template
               </Button>
-              <Link className="inline-flex min-h-10 items-center rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-900 hover:bg-slate-50" href="/admin/ucc">Back to UCC records</Link>
+              <Link className="inline-flex min-h-10 items-center rounded-md border border-slate-300 bg-white text-sm font-medium text-slate-900 hover:bg-slate-50" href="/admin/ucc">Back to UCC records</Link>
             </div>
 
             <div className="grid gap-4 md:grid-cols-2">
