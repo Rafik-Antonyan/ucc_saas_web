@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { useCreateInviteMutation } from "@/features/invites/api/invites.queries";
 import { inviteCreateSchema, type InviteCreateFormValues } from "@/features/invites/schemas/invites.schema";
 import { useAuth } from "@/features/auth/hooks/use-auth";
+import { useCompaniesQuery } from "@/features/companies/api/companies.queries";
 import { getErrorMessage } from "@/shared/lib/error";
 import { isSuperAdmin } from "@/shared/lib/rbac";
 import { UserRole } from "@/shared/types/auth";
@@ -15,6 +16,8 @@ export function InviteForm({ defaultRole = UserRole.COMPANY_USER }: { defaultRol
   const router = useRouter();
   const { user } = useAuth();
   const createMutation = useCreateInviteMutation();
+  const isSuper = isSuperAdmin(user);
+  const companiesQuery = useCompaniesQuery(undefined, { enabled: isSuper });
   const {
     register,
     handleSubmit,
@@ -27,10 +30,12 @@ export function InviteForm({ defaultRole = UserRole.COMPANY_USER }: { defaultRol
   const onSubmit = handleSubmit(async (values) => {
     await createMutation.mutateAsync({
       ...values,
-      companyId: isSuperAdmin(user) ? values.companyId || undefined : undefined
+      companyId: isSuper ? values.companyId || undefined : undefined
     });
     router.replace("/invites");
   });
+
+  const companies = companiesQuery.data ?? [];
 
   return (
     <Card>
@@ -41,14 +46,23 @@ export function InviteForm({ defaultRole = UserRole.COMPANY_USER }: { defaultRol
           </FormField>
           <FormField label="Role" error={errors.role?.message}>
             <Select {...register("role")}>
-              {isSuperAdmin(user) ? <option value={UserRole.SUPER_ADMIN}>Super admin</option> : null}
+              {isSuper ? <option value={UserRole.SUPER_ADMIN}>Super admin</option> : null}
               <option value={UserRole.COMPANY_ADMIN}>Company admin</option>
               <option value={UserRole.COMPANY_USER}>Company user</option>
             </Select>
           </FormField>
-          {isSuperAdmin(user) ? (
-            <FormField label="Company ID" error={errors.companyId?.message}>
-              <Input placeholder="Required for company users" {...register("companyId")} />
+          {isSuper ? (
+            <FormField label="Company" error={errors.companyId?.message}>
+              <Select {...register("companyId")} disabled={companiesQuery.isLoading}>
+                <option value="">
+                  {companiesQuery.isLoading ? "Loading companies..." : "Select a company"}
+                </option>
+                {companies.map((company) => (
+                  <option key={company.id} value={company.id}>
+                    {company.name}
+                  </option>
+                ))}
+              </Select>
             </FormField>
           ) : null}
           <FormField label="Expires in days" error={errors.expiresInDays?.message}>

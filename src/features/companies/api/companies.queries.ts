@@ -10,8 +10,12 @@ export const companiesQueryKeys = {
   detail: (id: string) => ["companies", "detail", id] as const
 };
 
-export function useCompaniesQuery(query?: CompanyListQuery) {
-  return useQuery({ queryKey: companiesQueryKeys.list(query), queryFn: () => companiesApi.list(query) });
+export function useCompaniesQuery(query?: CompanyListQuery, options?: { enabled?: boolean }) {
+  return useQuery({
+    queryKey: companiesQueryKeys.list(query),
+    queryFn: () => companiesApi.list(query),
+    enabled: options?.enabled ?? true
+  });
 }
 
 export function useCompanyQuery(id: string) {
